@@ -49,7 +49,7 @@ namespace SqlToCsharpConsoleAppConverter.Helpers
             if (string.IsNullOrWhiteSpace(Parameters.OutputPath))
             {
                 var pathElems = Parameters.InputPath.Split('\\', StringSplitOptions.RemoveEmptyEntries).SkipLast(1);
-                Parameters.OutputPath = string.Join('\\', pathElems) + "\\output\\";
+                Parameters.OutputPath = string.Join('\\', pathElems) + "\\output\\".TrimStart('\\');
                 return;
             }
         }
