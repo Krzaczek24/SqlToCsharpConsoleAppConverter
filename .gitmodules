@@ -1,0 +1,3 @@
+[submodule "ConsoleAppParametersHandler"]
+	path = ConsoleAppParametersHandler
+	url = https://github.com/Krzaczek24/ConsoleAppParametersHandler.git
