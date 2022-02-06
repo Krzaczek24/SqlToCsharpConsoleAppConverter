@@ -1,3 +1,6 @@
 [submodule "ConsoleAppParametersHandler"]
 	path = ConsoleAppParametersHandler
 	url = https://github.com/Krzaczek24/ConsoleAppParametersHandler.git
+[submodule "SqlToCsharpTranscriptor"]
+	path = SqlToCsharpTranscriptor
+	url = https://github.com/Krzaczek24/SqlToCsharpTranscriptor.git

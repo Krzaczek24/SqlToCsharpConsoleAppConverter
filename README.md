@@ -1,1 +1,1 @@
-# SQLtoCsharp
+# SqlToCsharpConverter
