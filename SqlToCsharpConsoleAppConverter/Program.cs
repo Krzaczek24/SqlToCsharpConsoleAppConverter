@@ -44,6 +44,9 @@ namespace SqlToCsharpConsoleAppConverter
                 .LoadSqlScriptData(Parameters.InputPath)
                 .ConvertToCsharpClassesUsingParams()
                 .SaveClassesToFiles(Parameters.OutputPath);
+
+            if (Parameters.ShowResultSummary)
+                Console.WriteLine(FilesHelper.GetDirectorySummary());
         }
     }
 }

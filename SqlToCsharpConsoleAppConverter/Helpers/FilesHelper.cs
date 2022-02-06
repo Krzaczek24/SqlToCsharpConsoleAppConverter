@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace SqlToCsharpConsoleAppConverter.Helpers
 {
@@ -50,6 +52,32 @@ namespace SqlToCsharpConsoleAppConverter.Helpers
                 Parameters.OutputPath = string.Join('\\', pathElems) + "\\output\\";
                 return;
             }
+        }
+
+        internal static ICollection<FileInfo> GetOutputFiles()
+        {
+            var directory = new DirectoryInfo(Parameters.OutputPath);
+            var files = directory.EnumerateFiles();
+            return files.ToList();
+        }
+
+        internal static string GetDirectorySummary()
+        {
+            var files = GetOutputFiles();
+            int filesCount = files?.Count ?? 0;
+            if (filesCount > 0)
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine($"Found [{filesCount}] output class files in output directory.\n[{Parameters.OutputPath}]");
+                int index = 0;
+                foreach (var file in files)
+                {
+                    sb.AppendLine($"\t{++index}.\t{file.Name}");
+                }
+                return sb.ToString();
+            }
+
+            return "No output class files has been found.";
         }
     }
 }
