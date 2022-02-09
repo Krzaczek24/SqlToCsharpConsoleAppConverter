@@ -10,18 +10,34 @@ namespace SqlToCsharpConsoleAppConverter
     public class Program
     {
         private static readonly ILogger Logger = LogManager.GetCurrentClassLogger();
-        private static readonly Type[] IncidentExceptions = new[] { 
+        private static readonly Type[] ExpectedExceptions = new[] { 
             typeof(ArgumentException), 
             typeof(IOException)
         };
 
         public static void Main(string[] args)
         {
+#if DEBUG
+            args = new[] { "-i", "DFMS_create.sql", "-n", "DFMS.Database", "-p", "Db", "-b", "DbTableCommonModel", "-a", "DFMS.Database.Base" };
+#endif
+
             try
             {
-                Run(args);
+                Parameters.Init(args);
+
+                FilesHelper.TryReadInputFile();
+                FilesHelper.SetOutputPathIfNone();
+                FilesHelper.TryCreateOutputFile();
+
+                Converter
+                    .LoadSqlScriptData(Parameters.InputPath)
+                    .ConvertToCsharpClassesUsingParams()
+                    .SaveClassesToFiles(Parameters.OutputPath);
+
+                if (Parameters.ShowResultSummary)
+                    Console.WriteLine(FilesHelper.GetDirectorySummary());
             }
-            catch (Exception ex) when (ex.Is(IncidentExceptions))
+            catch (Exception ex) when (ex.IsIn(ExpectedExceptions))
             {
                 Console.WriteLine(ex.Message);
             }
@@ -30,23 +46,6 @@ namespace SqlToCsharpConsoleAppConverter
                 Console.WriteLine("Unexpected error occured! Check logs for more details.");
                 Logger.Fatal(ex, "Unexpected error occured:");
             }
-        }
-
-        public static void Run(string[] args)
-        {
-            Parameters.Init(args);
-
-            FilesHelper.TryReadInputFile();
-            FilesHelper.SetOutputPathIfNone();
-            FilesHelper.TryCreateOutputFile();
-
-            Converter
-                .LoadSqlScriptData(Parameters.InputPath)
-                .ConvertToCsharpClassesUsingParams()
-                .SaveClassesToFiles(Parameters.OutputPath);
-
-            if (Parameters.ShowResultSummary)
-                Console.WriteLine(FilesHelper.GetDirectorySummary());
         }
     }
 }

@@ -6,7 +6,7 @@
     <RepositoryUrl>https://github.com/Krzaczek24/SqlToCsharpConsoleAppConverter</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageId>SqlToCsharpConsoleAppConverter</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <Authors>Tomasz 'Krzaczek' Drewek</Authors>
   </PropertyGroup>
 
@@ -21,9 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ConsoleAppParametersHandler" Version="1.0.0" />
     <PackageReference Include="NLog" Version="4.7.13" />
-    <PackageReference Include="SqlToCsharpTranscriptor" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ConsoleAppParametersHandler\Library\ConsoleAppParametersHandler.csproj" />
+    <ProjectReference Include="..\SqlToCsharpTranscriptor\Library\SqlToCsharpTranscriptor.csproj" />
   </ItemGroup>
 
   <ItemGroup>

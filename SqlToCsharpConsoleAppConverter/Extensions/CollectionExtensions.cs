@@ -10,7 +10,7 @@ namespace SqlToCsharpConsoleAppConverter.Extensions
             return collection.Contains(item);
         }
 
-        internal static bool Is(this object item, ICollection<Type> collection)
+        internal static bool IsIn(this object item, ICollection<Type> collection)
         {
             return collection.Contains(item.GetType());
         }
