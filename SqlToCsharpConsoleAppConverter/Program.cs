@@ -18,7 +18,14 @@ namespace SqlToCsharpConsoleAppConverter
         public static void Main(string[] args)
         {
 #if DEBUG
-            args = new[] { "-i", "DFMS_create.sql", "-n", "DFMS.Database", "-p", "Db", "-b", "DbTableCommonModel", "-a", "DFMS.Database.Base" };
+            args = new[] { 
+                "-i", "DFMS_create.sql", 
+                "-n", "DFMS.Database.Models", 
+                "-p", "Db", 
+                "-b", "DbTableCommonModel", 
+                "-a", "DFMS.Database.Models.Base",
+                "-c", "Children"
+            };
 #endif
 
             try

@@ -14,7 +14,13 @@ FilesHelper.TryCreateOutputFile(); // using static Parameters
 
 Converter
   .LoadSqlScriptData(Parameters.InputPath)
-  .ConvertToCsharpClassesUsingParams()
+  .ConvertToCsharpClasses()
+  .SetNamespace(Parameters.Namespace)
+  .SetBaseClass(Parameters.BaseClassName)
+  .SetBaseClassNamespace(Parameters.BaseClassNamespace)
+  .SetNamePrefix(Parameters.ClassPrefix)
+  .SetNameSuffix(Parameters.ClassSuffix)
+  .SetChildrenCollectionPropertyName(Parameters.ChildrenPropertyName);
   .SaveClassesToFiles(Parameters.OutputPath);
 
 if (Parameters.ShowResultSummary)
