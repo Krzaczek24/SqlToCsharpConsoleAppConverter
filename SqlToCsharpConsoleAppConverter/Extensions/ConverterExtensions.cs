@@ -5,7 +5,13 @@ namespace SqlToCsharpConsoleAppConverter.Extensions
     internal static class ConverterExtensions
     {
         internal static CsharpClassesData ConvertToCsharpClasses(this SqlScriptData sqlScriptData, 
-            string @namespace = null, string baseClassName = null, string baseClassNamespace = null, string namePrefix = null, string nameSuffix = null, string childrenPropertyName = null)
+            string @namespace = null, 
+            string baseClassName = null, 
+            string baseClassNamespace = null, 
+            string namePrefix = null, 
+            string nameSuffix = null, 
+            string childrenPropertyName = null,
+            string accessModifier = null)
         {
             return sqlScriptData
                 .ConvertToCsharpClasses()
@@ -14,7 +20,8 @@ namespace SqlToCsharpConsoleAppConverter.Extensions
                 .SetBaseClassNamespace(baseClassNamespace)
                 .SetNamePrefix(namePrefix)
                 .SetNameSuffix(nameSuffix)
-                .SetChildrenCollectionPropertyName(childrenPropertyName);
+                .SetChildrenCollectionPropertyName(childrenPropertyName)
+                .SetAccessModifier(accessModifier);
         }
 
         internal static CsharpClassesData ConvertToCsharpClassesUsingParams(this SqlScriptData sqlScriptData)
@@ -25,7 +32,8 @@ namespace SqlToCsharpConsoleAppConverter.Extensions
                 Parameters.BaseClassNamespace,
                 Parameters.ClassPrefix,
                 Parameters.ClassSuffix,
-                Parameters.ChildrenPropertyName);
+                Parameters.ChildrenPropertyName,
+                Parameters.AccessModifier);
         }
     }
 }

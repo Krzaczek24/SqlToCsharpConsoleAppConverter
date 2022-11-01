@@ -6,7 +6,7 @@
     <RepositoryUrl>https://github.com/Krzaczek24/SqlToCsharpConsoleAppConverter</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageId>SqlToCsharpConsoleAppConverter</PackageId>
-    <Version>1.2.1</Version>
+    <Version>1.3.0</Version>
     <Authors>Tomasz 'Krzaczek' Drewek</Authors>
   </PropertyGroup>
 

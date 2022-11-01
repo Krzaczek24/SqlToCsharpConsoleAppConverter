@@ -21,6 +21,7 @@ namespace SqlToCsharpConsoleAppConverter
             new NamespaceParameter('a', "Base class namespace (e.g. 'Database.Models.Base')\n\tcommon or default namespace will be used if parameter will be not passed"),
             new NamespaceParameter('c', "Name for children collection property (e.g. 'Children')\n\tthere will be no children collection property if parameter will be not passed"),
             new ParameterDefinition('r', "Print to console result summary."),
+            new KeywordParameter('m', "Output classes access modifier (e.g. 'internal' => internal class <TableName>)")
         });
         
         public static string InputPath { get => ph.Get('i').Value; set => ph.Get('i').Value = value; }
@@ -31,6 +32,7 @@ namespace SqlToCsharpConsoleAppConverter
         public static string BaseClassName { get => ph.Get('b').Value; set => ph.Get('b').Value = value; }
         public static string BaseClassNamespace { get => ph.Get('a').Value; set => ph.Get('a').Value = value; }
         public static string ChildrenPropertyName { get => ph.Get('c').Value; set => ph.Get('c').Value = value; }
+        public static string AccessModifier { get => ph.Get('m').Value; set => ph.Get('m').Value = value; }
         public static bool ShowResultSummary => ph.Get('r').Found;
 
         public static void Init(IEnumerable<string> inputArgs)

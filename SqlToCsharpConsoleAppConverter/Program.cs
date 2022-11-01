@@ -19,12 +19,15 @@ namespace SqlToCsharpConsoleAppConverter
         {
 #if DEBUG
             args = new[] { 
-                "-i", "DFMS_create.sql", 
+                //"-i", "DFMS_create.sql", 
+                "-i", "example_script.sql",
                 "-n", "DFMS.Database.Models", 
                 "-p", "Db", 
                 "-b", "DbTableCommonModel", 
                 "-a", "DFMS.Database.Models.Base",
-                "-c", "Children"
+                "-c", "Children",
+                "-m", "internal",
+                "-r"
             };
 #endif
 
